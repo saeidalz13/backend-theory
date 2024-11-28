@@ -66,6 +66,20 @@ The structure looks like this:
     - additional authenticated data, extra security and context to the token
 
 
+**It's a string with the segments below:**
+- Version
+- Type (public OR private)
+- Payload -> Put whatever you want here
+- Footer
+
+Some common payload attributes
+* iss -> issuer
+* sub -> subject
+* exp -> expiration time
+* iat -> issued at
+* jit -> token ID 
+
+
 ### Why Paseto?
 
 - Eliminates the risk of algorithm confusion. Devs wouldn't choose unsafe options
@@ -77,9 +91,19 @@ The structure looks like this:
     - use symmetric-key cryptography
     - same key is used for both encryption and decryption
     - suitable for server side session management
+    - these are simple
 
+You have a json to transmit
+you have a secret key
+=> you will create a local paseto with these two
+
+one key to both encrypt and decrypt
 
 - Public
     - involved a public key and private key
     - public for encryption and private for decryption
+    - These are not encrypted
+    - complicated
+    - asymmetric
 
+one private and one public key 
